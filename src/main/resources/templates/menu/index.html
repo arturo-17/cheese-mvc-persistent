@@ -8,13 +8,25 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<ul>
-    <li th:each = "menu : ${menus}">
-        <a th:href = "'menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
-    </li>
-</ul>
+<p th:unless="${menus} and ${menus.size()}">No Menus</p>
 
-<a href="/menu/add">Add Menu</a>
+
+<table class="table">
+
+    <tr>
+        <th>Menus</th>
+    </tr>
+
+    <tr th:each="menu : ${menus}">
+        <td><a th:href="'menu/view/'+ ${menu.id}" th:text="${menu.name}"></a></td>
+    </tr>
+    <tr>
+        <td>
+            <a href="menu/add">Add</a>
+        </td>
+    </tr>
+
+</table>
 
 </body>
 </html>
