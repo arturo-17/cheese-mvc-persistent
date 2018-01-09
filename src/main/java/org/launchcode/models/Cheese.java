@@ -15,6 +15,9 @@ public class Cheese {
     @GeneratedValue
     private int id;
 
+    @ManyToOne
+    private Category category;
+
     @NotNull
     @Size(min=3, max=15)
     private String name;
@@ -23,11 +26,9 @@ public class Cheese {
     @Size(min=1, message = "Description must not be empty")
     private String description;
 
-    @ManyToOne
-    private Category category;
-
     @ManyToMany(mappedBy = "cheeses")
     private List<Menu> menus;
+
 
     public Cheese(String name, String description) {
         this.name = name;
@@ -63,4 +64,5 @@ public class Cheese {
     public void setCategory(Category category) {
         this.category = category;
     }
+
 }
